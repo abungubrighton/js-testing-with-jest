@@ -8,16 +8,33 @@ class Stack {
         this.top = -1;
         this.items = {};
     }
+
+    get peek() {
+        // uses the top index value to get the item at the top of the stack
+        return this.items[this.top];
+    }
+
+    push(item) {
+        this.top += 1;
+        this.items[this.top] = item;
+    }
 };
 describe("My Stack", () => {
 
-    it('is crated empty', () => {
-        const stack = new Stack();
+    let stack;
+    beforeEach(() => {
+        stack = new Stack();
+    })
 
+    it('is crated empty', () => {
         expect(stack.top).toBe(-1);
         expect(stack.items).toEqual({});
     });
     //  to Hold off on a test add .todo EXAMPLE: it.todo('is crated empty');
-    it.todo('can push to the top of the stack');
+    it('can push to the top of the stack', () => {
+        stack.push("foo");
+        expect(stack.top).toBe(0);
+        expect(stack.peek).toBe("foo");
+    });
     it.todo('can pop off the stack');
 })
